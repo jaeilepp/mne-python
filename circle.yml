@@ -8,7 +8,7 @@ dependencies:
     - pip install pygraphviz
     - pip install matplotlib
     - pip install Pillow
-    - pip install vtk
+    - sudo apt-get install python-vtk
     - pip install mayavi
 
 test:
