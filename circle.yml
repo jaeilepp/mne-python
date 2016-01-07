@@ -1,0 +1,22 @@
+dependencies:
+
+  pre:
+    - pip install numpy
+    - pip install scipy
+    - pip install sphinx 
+    - pip install sphinx_gallery
+    - pip install pygraphviz
+    - pip install matplotlib
+    - pip install Pillow
+    - pip install mayavi
+
+test:
+  override:
+    - cd doc && make html_dev
+    - cd doc && make html_stable
+
+general:
+  artifacts:
+    - "doc/_build/html"
+    - "doc/build/html_stable"
+
