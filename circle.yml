@@ -11,7 +11,7 @@ dependencies:
     - sudo apt-get install libvtk5-dev python-vtk
     - sudo apt-get install cmake
     - wget www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
-    - tar xvzf vtk-5.6.0.tar.gz
+    - tar xvzf vtk-5.10.1.tar.gz
     - mkdir VTK_BUILD
     - cd VTK_BUILD
     - cmake ../VTK5.10.1
