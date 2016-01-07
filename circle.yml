@@ -23,8 +23,8 @@ dependencies:
 
 test:
   override:
-    - cd doc && make html_dev
-    - cd doc && make html_stable
+    - cd doc && make html_dev --yes
+    - cd doc && make html_stable --yes
 
 general:
   artifacts:
