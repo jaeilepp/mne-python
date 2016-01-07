@@ -1,8 +1,13 @@
 dependencies:
 
   pre:
-    - pip install numpy
-    - pip install scipy
+    - wget -q http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+    - chmod +x miniconda.sh
+    - ./miniconda.sh -b -p /home/travis/miniconda
+    - export PATH=/home/travis/miniconda/bin:$PATH
+    - conda update --yes --quiet conda
+    - export DISPLAY=:99.0
+    - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac
     - pip install sphinx 
     - pip install sphinx_gallery
     - pip install pygraphviz
