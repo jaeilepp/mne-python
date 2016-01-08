@@ -23,8 +23,9 @@ dependencies:
 
 test:
   override:
-    - cd doc && make html_dev --yes
-    - cd doc && make html_stable --yes
+    - cd .. && mkdir examples $$ cd examples $$ wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvzf vtk-5.10.1.tar.gz
+    - cd doc && make html_dev
+    - cd doc && make html_stable
 
 general:
   artifacts:
