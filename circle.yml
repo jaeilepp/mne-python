@@ -22,7 +22,13 @@ dependencies:
     #- tar xvzf vtk-5.10.1.tar.gz
     #- mkdir VTK_BUILD && cd VTK_BUILD && cmake ../VTK5.10.1 && sudo make install
     - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES mayavi
-    - mkdir .mne && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_EEGBCI_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_MEGSIM_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SAMPLE_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SOMATO_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SPM_FACE_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_TESTING_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/"}' > mne-python.json
+    - export MNE_DATASETS_BRAINSTORM_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
+    - export MNE_DATASETS_EEGBCI_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
+    - export MNE_DATASETS_MEGSIM_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
+    - export MNE_DATASETS_SAMPLE_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
+    - export MNE_DATASETS_SOMATO_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
+    - export MNE_DATASETS_SPM_FACE_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
+    - export MNE_DATASETS_TESTING_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
 
 test:
   override:
