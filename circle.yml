@@ -1,6 +1,6 @@
 dependencies:
   cache_directories:
-    - "~/examples"
+    - "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/"
 
   pre:
     - wget -q http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
@@ -25,8 +25,8 @@ dependencies:
 
 test:
   override:
-    - cd .. && mkdir examples
-    - cd .. && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
+    - cd ../virtualenvs/venv-system/lib/python2.7/site-packages && mkdir examples
+    - cd ../virtualenvs/venv-system/lib/python2.7/site-packages/examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
     - cd doc && make html_dev
     - cd doc && make html_stable
 
