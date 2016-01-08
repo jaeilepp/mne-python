@@ -17,21 +17,12 @@ dependencies:
     - pip install matplotlib
     - pip install Pillow
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
-    #- sudo apt-get install cmake
-    #- wget www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
-    #- tar xvzf vtk-5.10.1.tar.gz
-    #- mkdir VTK_BUILD && cd VTK_BUILD && cmake ../VTK5.10.1 && sudo make install
     - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES mayavi
-    - export MNE_DATASETS_BRAINSTORM_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
-    - export MNE_DATASETS_EEGBCI_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
-    - export MNE_DATASETS_MEGSIM_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
-    - export MNE_DATASETS_SAMPLE_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
-    - export MNE_DATASETS_SOMATO_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
-    - export MNE_DATASETS_SPM_FACE_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
-    - export MNE_DATASETS_TESTING_PATH=~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/
+    - cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/, "MNE_DATASETS_EEGBCI_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_MEGSIM_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SAMPLE_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SOMATO_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SPM_FACE_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_TESTING_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/"}' > mne-python.json
 
 test:
   override:
+    - export PATH=/home/ubuntu/miniconda/bin:$PATH
     - cd ../virtualenvs/venv-system/lib/python2.7/site-packages && mkdir examples
     - cd ../virtualenvs/venv-system/lib/python2.7/site-packages/examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
     - cd ../virtualenvs/venv-system/lib/python2.7/site-packages/examples && mkdir MEGSIM && cd MEGSIM && mkdir megsim && cd megsim && mkdir empdata && cd empdata && mkdir neuromag && cd neuromag && mkdir visual && cd visual && wget http://cobre.mrn.org/megsim/empdata/neuromag/visual/subject1_day1_vis_raw.fif && wget http://cobre.mrn.org/megsim/empdata/neuromag/visual/subject1_day2_vis_raw.fif && wget http://cobre.mrn.org/megsim/empdata/neuromag/visual/subject3_day1_vis_raw.fif && wget http://cobre.mrn.org/megsim/empdata/neuromag/visual/subject3_day2_vis_raw.fif 
