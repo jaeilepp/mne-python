@@ -18,7 +18,7 @@ dependencies:
     - pip install Pillow
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES mayavi
-    - cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_EEGBCI_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_MEGSIM_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SAMPLE_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SOMATO_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_SPM_FACE_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", "MNE_DATASETS_TESTING_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/"}' > mne-python.json
+    - cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH": "~/virtualenvs/venv-system/lib/python2.7/site-packages/examples/", ' > mne-python.json
 
 test:
   override:
