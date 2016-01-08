@@ -25,7 +25,8 @@ dependencies:
 
 test:
   override:
-    - cd .. && mkdir examples $$ cd examples $$ mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
+    - cd .. && mkdir examples
+    - cd .. && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
     - cd doc && make html_dev
     - cd doc && make html_stable
 
