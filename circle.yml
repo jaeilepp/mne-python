@@ -11,7 +11,7 @@ dependencies:
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install --yes --quiet $ENSURE_PACKAGES mayavi
-    - /home/ubuntu/miniconda/bin/conda install scipy
+    - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install pysurfer ipython
     - /home/ubuntu/miniconda/bin/python setup.py install
 
