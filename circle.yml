@@ -12,7 +12,7 @@ dependencies:
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install --yes --quiet $ENSURE_PACKAGES mayavi
     - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install ipython pysurfer
+    - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install ipython pysurfer scikit-learn
     - /home/ubuntu/miniconda/bin/python setup.py install
 
 test:
@@ -20,14 +20,11 @@ test:
     # Add a conf file manually to avoid queries in the middle of the build.
     - cd .. && mkdir .mne && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/mne_data"}' > mne-python.json
     - cd .. && mkdir mne_data && cd mne_data && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
-    #- cd ../mne_data/ && mkdir MEGSIM && cd MEGSIM && mkdir megsim && cd megsim && mkdir empdata && cd empdata && mkdir neuromag && cd neuromag && mkdir visual && cd #visual && wget http://cobre.mrn.org/megsim/empdata/neuromag/visual/subject1_day1_vis_raw.fif && wget http://cobre.mrn.org/megsim/empdata/neuromag/visual/#subject1_day2_vis_raw.fif && wget http://cobre.mrn.org/megsim/empdata/neuromag/visual/subject3_day1_vis_raw.fif && wget http://cobre.mrn.org/megsim/empdata/neuromag/#visual/subject3_day2_vis_raw.fif 
-    #- cd ../mne_data/MEGSIM/megsim && mkdir simdata && cd simdata && mkdir neuromag && cd neuromag && mkdir visual && cd visual && wget http://cobre.mrn.org/megsim/#simdata/neuromag/visual/M87174545_vis_sim1A_4mm_30na_neuro_rn.fif && wget http://cobre.mrn.org/megsim/simdata/neuromag/visual/#M87174545_vis_sim1B_20mm_50na_neuro_rn.fif && wget http://cobre.mrn.org/megsim/simdata/neuromag/visual/M87174545_vis_sim2_4mm_30na_neuro_rn.fif && wget http://#cobre.mrn.org/megsim/simdata/neuromag/visual/M87174545_vis_sim3A_4mm_30na_neuro_rn.fif && wget http://cobre.mrn.org/megsim/simdata/neuromag/visual/#M87174545_vis_sim3B_20mm_50na_neuro_rn.fif && wget http://cobre.mrn.org/megsim/simdata/neuromag/visual/M87174545_vis_sim4_4mm_30na_neuro_rn.fif && wget http://#cobre.mrn.org/megsim/simdata/neuromag/visual/M87174545_vis_sim5_4mm_30na_neuro_rn.fif
-    #- cd ../mne_data/MEGSIM/megsim && mkdir simdata_singleTrials && cd simdata_singleTrials
     # Some examples take longer than 10 minutes to run.
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
-        timeout: 1200
+        timeout: 1500
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_stable:
-        timeout: 1200
+        timeout: 1500
 
 general:
   artifacts:
