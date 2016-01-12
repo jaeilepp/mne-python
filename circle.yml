@@ -10,7 +10,7 @@ dependencies:
     - /home/ubuntu/miniconda/bin/conda update --yes --quiet conda
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install scipy --yes && conda install --yes --quiet $ENSURE_PACKAGES mayavi
+    - export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install scipy==0.10.1 --yes && conda install --yes --quiet $ENSURE_PACKAGES mayavi
     - /home/ubuntu/miniconda/bin/python setup.py install
 
 test:
