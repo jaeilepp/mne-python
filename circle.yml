@@ -12,7 +12,7 @@ dependencies:
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install --yes --quiet $ENSURE_PACKAGES mayavi
     - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install pysurfer ipython
+    - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install ipython pysurfer
     - /home/ubuntu/miniconda/bin/python setup.py install
 
 test:
