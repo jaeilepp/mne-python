@@ -36,6 +36,20 @@ sample_data:
 testing_data:
 	@python -c "import mne; mne.datasets.testing.data_path(verbose=True);"
 
+spm_data:
+	@python -c "import mne; mne.datasets.spm.data_path(verbose=True):"
+
+somato_data:
+	@python -c "import mne; mne.datasets.somato.data_path(verbose=True):"
+
+brainstorm_data:
+	@python -c "import mne; mne.datasets.brainstorm.data_path(verbose=True):"
+
+fake_data:
+	@python -c "import mne; mne.datasets.fake.data_path(verbose=True):"
+
+examples_data: sample_data testing_data spm_data somato_data brainstorm_data fake_data
+
 test: in
 	rm -f .coverage
 	$(NOSETESTS) -a '!ultra_slow_test' mne
