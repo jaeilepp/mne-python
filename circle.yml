@@ -14,6 +14,7 @@ dependencies:
     - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install ipython pysurfer scikit-learn
     - /home/ubuntu/miniconda/bin/python setup.py install
+    - make testing_data
 
 test:
   override:
