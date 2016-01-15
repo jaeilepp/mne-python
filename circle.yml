@@ -15,13 +15,14 @@ dependencies:
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install ipython
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install pysurfer scikit-learn
     - /home/ubuntu/miniconda/bin/python setup.py install
-    - make examples_data
+
 
 test:
   override:
     # Add a conf file manually to avoid queries in the middle of the build.
     - cd .. && mkdir .mne && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/mne_data"}' > mne-python.json
-    #- cd .. && mkdir mne_data && cd mne_data && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
+    - cd .. && mkdir mne_data && cd mne_data && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
+    - make examples_data
     # Some examples take longer than 10 minutes to run.
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
         timeout: 1500
