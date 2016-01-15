@@ -24,7 +24,7 @@ test:
     - cd .. && mkdir mne_data && cd mne_data && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
     - make examples_data
     # Some examples take longer than 10 minutes to run.
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
+    - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev-noplot:
         timeout: 1500
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_stable:
     #    timeout: 1500
