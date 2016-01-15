@@ -42,8 +42,14 @@ spm_data:
 somato_data:
 	@python -c "import mne; mne.datasets.somato.data_path(verbose=True);"
 
-brainstorm_data:
-	@python -c "import mne; mne.datasets.brainstorm.data_path(verbose=True);"
+bst_auditory_data:
+	@python -c "import mne; mne.datasets.brainstorm.bst_auditory.data_path(verbose=True);"
+
+bst_resting_data:
+	@python -c "import mne; mne.datasets.brainstorm.bst_resting.data_path(verbose=True);"
+
+bst_raw_data:
+	@python -c "import mne; mne.datasets.brainstorm.bst_raw.data_path(verbose=True);"
 
 examples_data: sample_data testing_data spm_data somato_data brainstorm_data fake_data
 
