@@ -19,12 +19,12 @@ dependencies:
 
 test:
   override:
-    # Add a conf file manually to avoid queries in the middle of the build.
     - make sample_data
     - make testing_data
     - make spm_data
     - make somato_data
-    - cd .. && mkdir .mne && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/mne_data"}' > mne-python.json
+    # Add a conf file manually to avoid queries in the middle of the build.
+    - cd .. && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/mne_data","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/mne_data"}' > mne-python.json
     - cd .. && mkdir mne_data && cd mne_data && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
     # Some examples take longer than 10 minutes to run.
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev-noplot:
