@@ -16,9 +16,18 @@ import sys
 import os
 import os.path as op
 from datetime import date
+
 import sphinx_gallery as sg
 
 sg_extension = 'sphinx_gallery.gen_gallery'
+
+os.environ['ETS_TOOLKIT'] = 'TkAgg'
+try:
+    import sphinx_gallery as sg
+    sg_extension = 'sphinx_gallery.gen_gallery'
+except ImportError:
+    import sphinxgallery as sg
+    sg_extension = 'sphinxgallery.gen_gallery'
 
 import sphinx_bootstrap_theme
 
