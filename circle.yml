@@ -1,6 +1,8 @@
 dependencies:
   cache_directories:
     - "/home/ubuntu/examples/"
+    - "doc/_build/html"
+    - "doc/build/html_stable"
 
   pre:
     - wget -q http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
@@ -15,10 +17,6 @@ dependencies:
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install ipython
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install pysurfer scikit-learn
     - /home/ubuntu/miniconda/bin/python setup.py install
-
-
-test:
-  override:
     - make sample_data
     - make testing_data
     - make spm_data
@@ -26,8 +24,11 @@ test:
     # Add a conf file manually to avoid queries in the middle of the build.
     - cd .. && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/examples","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/examples","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/examples","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/examples","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/examples","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/examples","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/examples"}' > mne-python.json
     - cd .. && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
+
+test:
+  override:
     # Some examples take longer than 10 minutes to run.
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev-noplot:
+    - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
         timeout: 1500
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_stable:
     #    timeout: 1500
