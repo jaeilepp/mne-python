@@ -29,7 +29,7 @@ test:
   override:
     # Some examples take longer than 10 minutes to run.
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
-        timeout: 1500
+        timeout: 1000
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_stable:
     #    timeout: 1500
 
