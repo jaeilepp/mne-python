@@ -17,11 +17,13 @@ import os
 import os.path as op
 from datetime import date
 
+
 import sphinx_gallery as sg
 
 sg_extension = 'sphinx_gallery.gen_gallery'
 
-os.environ['ETS_TOOLKIT'] = 'TkAgg'
+os.environ['ETS_TOOLKIT'] = 'Agg'
+
 try:
     import sphinx_gallery as sg
     sg_extension = 'sphinx_gallery.gen_gallery'
