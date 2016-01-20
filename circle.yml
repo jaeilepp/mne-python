@@ -1,8 +1,6 @@
 dependencies:
   cache_directories:
     - "/home/ubuntu/examples/"
-    - "doc/_build/html"
-    - "doc/build/html_stable"
 
   pre:
     - wget -q http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
@@ -16,6 +14,7 @@ dependencies:
     - /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install ipython
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install pysurfer scikit-learn
+    - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
     - /home/ubuntu/miniconda/bin/python setup.py install
     - make sample_data
     - make testing_data
