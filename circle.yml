@@ -18,7 +18,7 @@ dependencies:
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
-    - sudo python setup.py install
+    - python setup.py install
     - make sample_data
     - make testing_data
     - make spm_data
