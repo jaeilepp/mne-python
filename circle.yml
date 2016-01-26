@@ -13,7 +13,7 @@ dependencies:
     - sudo pip install sphinx==1.2.3 sphinx_gallery sphinx_bootstrap_theme pygraphviz matplotlib Pillow neo scipy numpy
     - sudo pip install numpy --upgrade
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
-    - pip install mayavi
+    - sudo pip install mayavi
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install --yes --quiet $ENSURE_PACKAGES mayavi
     #- /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
