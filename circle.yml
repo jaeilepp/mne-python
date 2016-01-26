@@ -12,14 +12,14 @@ dependencies:
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac
     - sudo pip install sphinx==1.2.3 sphinx_gallery sphinx_bootstrap_theme pygraphviz matplotlib Pillow neo scipy numpy
     - sudo pip install numpy --upgrade
-    - apt-get install libvtk5-dev python-vtk python-configobj
+    - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - pip install mayavi
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install --yes --quiet $ENSURE_PACKAGES mayavi
     #- /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
     - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
-    - python setup.py install
+    - sudo python setup.py install
     - make sample_data
     - make testing_data
     - make spm_data
