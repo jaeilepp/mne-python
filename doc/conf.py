@@ -21,8 +21,6 @@ import sphinx_gallery as sg
 
 sg_extension = 'sphinx_gallery.gen_gallery'
 
-os.environ['ETS_TOOLKIT'] = 'Agg'
-
 try:
     import sphinx_gallery as sg
     sg_extension = 'sphinx_gallery.gen_gallery'
