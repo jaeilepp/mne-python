@@ -8,34 +8,32 @@ dependencies:
     #- ./miniconda.sh -b -p /home/ubuntu/miniconda
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install numpy sphinx==1.2.3 sphinx_gallery sphinx_bootstrap_theme pygraphviz matplotlib Pillow neo
     #- /home/ubuntu/miniconda/bin/conda update --yes --quiet conda
-    - sudo pip install --upgrade pip
-    #- /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac
-    - sudo pip install sphinx==1.2.3 sphinx_gallery sphinx_bootstrap_theme pygraphviz matplotlib Pillow neo scipy numpy
-    - sudo pip install numpy --upgrade
-    - sudo apt-get install libvtk5-dev python-vtk python-configobj
-    - sudo pip install mayavi
-    #- export PATH=/home/ubuntu/miniconda/bin:$PATH && conda install --yes --quiet $ENSURE_PACKAGES mayavi
-    #- /home/ubuntu/miniconda/bin/conda install --yes --quiet $ENSURE_PACKAGES scipy
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
-    - sudo python setup.py install
-    - make sample_data
-    - make testing_data
-    - make spm_data
-    - make somato_data
+
+    #- sudo pip install --upgrade pip
+    #- sudo pip install sphinx==1.2.3 sphinx_gallery sphinx_bootstrap_theme pygraphviz matplotlib Pillow neo scipy numpy
+    #- sudo pip install numpy --upgrade
+    #- sudo apt-get install libvtk5-dev python-vtk python-configobj
+    #- sudo pip install mayavi
+    #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
+    #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
+    #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
+    #- sudo python setup.py install
+    #- make sample_data
+    #- make testing_data
+    #- make spm_data
+    #- make somato_data
     # Add a conf file manually to avoid queries in the middle of the build.
-    - cd .. && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/examples","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/examples","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/examples","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/examples","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/examples","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/examples","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/examples"}' > mne-python.json
-    - if [[ ! -e ../examples/MNE-brainstorm-data ]]; then cd .. && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2; fi
+    #- cd .. && cd .mne && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/examples","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/examples","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/examples","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/examples","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/examples","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/examples","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/examples"}' > mne-python.json
+    - if [[ ! -e ../examples/MNE-brainstorm-data ]]; then cd .. && mkdir examples && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2; fi
 
   override:
     - cd
 
-test:
-  override:
+    #test:
+    #override:
     # Some examples take longer than 10 minutes to run.
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
-        timeout: 1000
+    #- export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
+    #    timeout: 1000
 
 general:
   artifacts:

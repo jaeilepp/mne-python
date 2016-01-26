@@ -17,11 +17,11 @@ import os
 import os.path as op
 from datetime import date
 
-
 import sphinx_gallery as sg
 
 sg_extension = 'sphinx_gallery.gen_gallery'
 
+"""
 # First, and before importing any Enthought packages, set the ETS_TOOLKIT
 # environment variable to qt4, to tell Traits that we will use Qt.
 os.environ['ETS_TOOLKIT'] = 'qt4'
@@ -36,7 +36,7 @@ from pyface.qt import QtGui, QtCore
 # the following lines are executed before the import of PyQT:
 #   import sip
 #   sip.setapi('QString', 2)
-
+"""
 try:
     import sphinx_gallery as sg
     sg_extension = 'sphinx_gallery.gen_gallery'
