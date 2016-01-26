@@ -17,9 +17,25 @@ import os
 import os.path as op
 from datetime import date
 
+
 import sphinx_gallery as sg
 
 sg_extension = 'sphinx_gallery.gen_gallery'
+
+# First, and before importing any Enthought packages, set the ETS_TOOLKIT
+# environment variable to qt4, to tell Traits that we will use Qt.
+os.environ['ETS_TOOLKIT'] = 'qt4'
+# By default, the PySide binding will be used. If you want the PyQt bindings
+# to be used, you need to set the QT_API environment variable to 'pyqt'
+#os.environ['QT_API'] = 'pyqt'
+
+# To be able to use PySide or PyQt4 and not run in conflicts with traits,
+# we need to import QtGui and QtCore from pyface.qt
+from pyface.qt import QtGui, QtCore
+# Alternatively, you can bypass this line, but you need to make sure that
+# the following lines are executed before the import of PyQT:
+#   import sip
+#   sip.setapi('QString', 2)
 
 try:
     import sphinx_gallery as sg
