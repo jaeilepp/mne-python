@@ -29,7 +29,7 @@ dependencies:
     - cd .. && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2
 
   override:
-    - 
+    - cd
 
 test:
   override:
