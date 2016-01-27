@@ -11,9 +11,9 @@ dependencies:
 
     - sudo pip install --upgrade pip
     - sudo pip install sphinx==1.2.3 sphinx_gallery sphinx_bootstrap_theme pygraphviz matplotlib Pillow neo scipy numpy
-    #- sudo pip install numpy --upgrade
-    #- sudo apt-get install libvtk5-dev python-vtk python-configobj
-    #- sudo pip install mayavi
+    - sudo pip install numpy --upgrade
+    - sudo apt-get install libvtk5-dev python-vtk python-configobj
+    - sudo pip install mayavi
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
