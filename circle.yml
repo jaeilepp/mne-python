@@ -28,7 +28,7 @@ dependencies:
     - if [[ ! -e ../examples/MNE-brainstorm-data ]]; then cd .. && sudo chmod 777 examples && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2; fi
 
   override:
-    - sudo chmod 777 .mne
+    - cd .. && sudo chmod 777 .mne
 
 test:
   override:
