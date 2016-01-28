@@ -28,12 +28,12 @@ dependencies:
     - if [[ ! -e ../examples/MNE-brainstorm-data ]]; then cd .. && sudo chmod 777 examples && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2; fi
 
   override:
-    - cd
+    - sudo chmod 777 .mne
 
 test:
   override:
     # Some examples take longer than 10 minutes to run.
-    - export PATH=/home/ubuntu/miniconda/bin:$PATH && cd doc && make html_dev:
+    - cd doc && make html_dev:
         timeout: 1000
 
 general:
