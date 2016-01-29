@@ -10,14 +10,14 @@ dependencies:
     #- /home/ubuntu/miniconda/bin/conda update --yes --quiet conda
     - sudo pip install --upgrade pip
     - sudo pip install sphinx==1.2.3 pygraphviz matplotlib Pillow neo scipy numpy
-    - sudo pip install ipython
-    - sudo pip install pysurfer
     #- sudo pip install sphinx_gallery sphinx_bootstrap_theme
     - cd .. && git clone https://github.com/sphinx-gallery/sphinx-gallery.git && cd sphinx-gallery && sudo pip install -r requirements.txt && sudo python setup.py develop
     - sudo pip install sphinx_bootstrap_theme
     - sudo pip install numpy --upgrade
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - sudo pip install mayavi
+    - sudo pip install ipython
+    - sudo pip install pysurfer
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
