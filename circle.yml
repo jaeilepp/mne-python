@@ -16,7 +16,7 @@ dependencies:
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo apt-get install python python-tk idle python-pmw python-imaging
-    #- sudo pip install ipython
+    - sudo pip install ipython
     - sudo pip install pysurfer
     - sudo pip install scikit-learn
     - sudo python setup.py install
