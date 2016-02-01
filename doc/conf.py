@@ -36,7 +36,7 @@ from pyface.qt import QtGui, QtCore
 # the following lines are executed before the import of PyQT:
 #   import sip
 #   sip.setapi('QString', 2)
-"""
+
 try:
     import sphinx_gallery as sg
     sg_extension = 'sphinx_gallery.gen_gallery'
