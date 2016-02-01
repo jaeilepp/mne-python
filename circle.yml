@@ -34,6 +34,7 @@ dependencies:
 
   override:
     - cd .. && sudo chmod 777 .mne
+    - cd .. && sudo chmod 777 examples
 
 test:
   override:
