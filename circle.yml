@@ -39,7 +39,7 @@ test:
   override:
     # Some examples take longer than 10 minutes to run.
     - cd doc && make html_dev:
-        timeout: 1000
+        timeout: 1500
 
 general:
   artifacts:
