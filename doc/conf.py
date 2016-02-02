@@ -37,12 +37,6 @@ from pyface.qt import QtGui, QtCore
 #   import sip
 #   sip.setapi('QString', 2)
 """
-try:
-    import sphinx_gallery as sg
-    sg_extension = 'sphinx_gallery.gen_gallery'
-except ImportError:
-    import sphinxgallery as sg
-    sg_extension = 'sphinxgallery.gen_gallery'
 
 import sphinx_bootstrap_theme
 
