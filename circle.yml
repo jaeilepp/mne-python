@@ -45,7 +45,7 @@ test:
     - cd doc && make html_dev-pattern PATTERN=/preprocessing:
         timeout: 1500
         parallel: true
-    - cd doc && make html_dev-pattern PATTERN=/realtime:
+    - cd doc && make html_dev-pattern PATTERN=/visualization:
         timeout: 1500
         parallel: true
     - cd doc && make html_dev-pattern PATTERN=/connectivity:
