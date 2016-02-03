@@ -39,8 +39,15 @@ dependencies:
 test:
   override:
     # Some examples take longer than 10 minutes to run.
-    - cd doc && make html_dev:
+    - cd doc && make html_dev-pattern PATTERN=/io:
         timeout: 1500
+    - cd doc && make html_dev-pattern PATTERN=/preprocessing:
+        timeout: 1500
+    - cd doc && make html_dev-pattern PATTERN=/realtime:
+        timeout: 1500
+    - cd doc && make html_dev-pattern PATTERN=/connectivity:
+        timeout: 1500
+
 
 general:
   artifacts:
