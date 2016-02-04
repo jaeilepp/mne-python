@@ -14,7 +14,7 @@ dependencies:
     #- /home/ubuntu/miniconda/bin/conda update --yes --quiet conda
     - sudo pip install --upgrade pip
     - sudo apt-get install python-setuptools
-    - sudo pip install ipython
+    #- sudo pip install ipython
     - sudo pip install sphinx==1.2.3 pygraphviz matplotlib Pillow neo scipy numpy
     #- sudo pip install sphinx_gallery sphinx_bootstrap_theme
     - cd .. && git clone https://github.com/sphinx-gallery/sphinx-gallery.git && cd sphinx-gallery && sudo pip install -r requirements.txt && sudo python setup.py develop
