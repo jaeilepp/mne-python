@@ -39,24 +39,9 @@ dependencies:
 test:
   override:
     # Some examples take longer than 10 minutes to run.
-    - cd doc && make html_dev-pattern PATTERN=:
-        timeout: 1500
+    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN=/io ;; 1) cd doc && make html_dev-pattern PATTERN=/preprocessing ;; 2) cd doc && make html_dev-pattern PATTERN=/visualization ;; 3)cd doc && make html_dev-pattern PATTERN=/connectivity ;; esac:
         parallel: true
-        files:
-          - /io
-          - /preprocessing
-          - /visualization
-          - /connectivity
-    #- cd doc && make html_dev-pattern PATTERN=/preprocessing:
-    #    timeout: 1500
-    #    parallel: true
-    #- cd doc && make html_dev-pattern PATTERN=/visualization:
-    #    timeout: 1500
-    #    parallel: true
-    #- cd doc && make html_dev-pattern PATTERN=/connectivity:
-    #    timeout: 1500
-    #    parallel: true
-
+        timeout: 1500
 
 general:
   artifacts:
