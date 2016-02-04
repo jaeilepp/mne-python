@@ -16,8 +16,8 @@ dependencies:
     - sudo pip install numpy --upgrade
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - sudo pip install mayavi
-    #- sudo pip install ipython
-    #- sudo pip install pysurfer
+    - sudo pip install ipython
+    - sudo pip install pysurfer
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
@@ -39,18 +39,23 @@ dependencies:
 test:
   override:
     # Some examples take longer than 10 minutes to run.
-    - cd doc && make html_dev-pattern PATTERN=/io:
+    - cd doc && make html_dev-pattern:
         timeout: 1500
         parallel: true
-    - cd doc && make html_dev-pattern PATTERN=/preprocessing:
-        timeout: 1500
-        parallel: true
-    - cd doc && make html_dev-pattern PATTERN=/visualization:
-        timeout: 1500
-        parallel: true
-    - cd doc && make html_dev-pattern PATTERN=/connectivity:
-        timeout: 1500
-        parallel: true
+        files:
+          - PATTERN=/io
+          - PATTERN=/preprocessing
+          - PATTERN=/visualization
+          - PATTERN=/connectivity
+    #- cd doc && make html_dev-pattern PATTERN=/preprocessing:
+    #    timeout: 1500
+    #    parallel: true
+    #- cd doc && make html_dev-pattern PATTERN=/visualization:
+    #    timeout: 1500
+    #    parallel: true
+    #- cd doc && make html_dev-pattern PATTERN=/connectivity:
+    #    timeout: 1500
+    #    parallel: true
 
 
 general:
