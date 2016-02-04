@@ -9,15 +9,15 @@ dependencies:
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && pip install numpy sphinx==1.2.3 sphinx_gallery sphinx_bootstrap_theme pygraphviz matplotlib Pillow neo
     #- /home/ubuntu/miniconda/bin/conda update --yes --quiet conda
     - sudo pip install --upgrade pip
-    - sudo pip install sphinx==1.2.3 pygraphviz matplotlib Pillow neo scipy numpy
     - sudo pip install ipython
-    - sudo pip install pysurfer
+    - sudo pip install sphinx==1.2.3 pygraphviz matplotlib Pillow neo scipy numpy
     #- sudo pip install sphinx_gallery sphinx_bootstrap_theme
     - cd .. && git clone https://github.com/sphinx-gallery/sphinx-gallery.git && cd sphinx-gallery && sudo pip install -r requirements.txt && sudo python setup.py develop
     - sudo pip install sphinx_bootstrap_theme
     - sudo pip install numpy --upgrade
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - sudo pip install mayavi
+    - sudo pip install pysurfer
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
@@ -39,7 +39,7 @@ dependencies:
 test:
   override:
     # Some examples take longer than 10 minutes to run.
-    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN=/io ;; 1) cd doc && make html_dev-pattern PATTERN=/preprocessing ;; 2) cd doc && make html_dev-pattern PATTERN=/visualization ;; 3)cd doc && make html_dev-pattern PATTERN=/connectivity ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io\|/inverse\|/decoding' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing\|/visualization\|/datasets' ;; 2) cd doc && make html_dev-pattern PATTERN='/time_frequency\|/stats\|/simulation' ;; 3)cd doc && make html_dev-pattern PATTERN='/connectivity\|/realtime\|/forward' ;; esac:
         parallel: true
         timeout: 1500
 
