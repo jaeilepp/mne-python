@@ -46,7 +46,7 @@ test:
     # Some examples take longer than 10 minutes to run.
     - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io\|/inverse\|/decoding' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing\|/visualization\|/datasets' ;; 2) cd doc && make html_dev-pattern PATTERN='/time_frequency\|/stats\|/simulation' ;; 3)cd doc && make html_dev-pattern PATTERN='/connectivity\|/realtime\|/forward' ;; esac:
         parallel: true
-        timeout: 1500
+        timeout: 2500
 
 general:
   artifacts:
