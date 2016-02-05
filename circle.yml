@@ -48,6 +48,13 @@ test:
         parallel: true
         timeout: 2500
 
+test:
+  post:
+    - >
+      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
+        ./bin/run-functional-tests.sh ${FUNCTIONAL_TEST_TARGET};
+      fi
+
 general:
   artifacts:
     - "doc/_build/html"
