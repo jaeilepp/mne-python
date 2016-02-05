@@ -23,6 +23,7 @@ dependencies:
     - sudo apt-get install libvtk5-dev python-vtk python-configobj
     - sudo pip install mayavi
     - sudo pip install pysurfer
+    - sudo pip install nilearn
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install ipython
     #- export PATH=/home/ubuntu/miniconda/bin:$PATH && sudo pip install pysurfer scikit-learn
