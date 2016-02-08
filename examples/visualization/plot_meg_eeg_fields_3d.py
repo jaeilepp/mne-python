@@ -39,7 +39,7 @@ evoked.plot_field(maps, time=0.11)
 # Compute the MEG fields in the scalp surface
 evoked.pick_types(meg=True, eeg=False)
 maps_head = make_field_map(evoked, trans_fname, subject='sample',
-                           subjects_dir=subjects_dir, n_jobs=2,
+                           subjects_dir=subjects_dir, n_jobs=1,
                            meg_surf='head')
 
 # Plot MEG fields both in scalp surface and the helmet in the same figure.

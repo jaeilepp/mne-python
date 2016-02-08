@@ -174,14 +174,16 @@ def _comp_sums_meg(beta, ctheta, lut_fun, n_fact, volume_integral):
     #  * sums[:, 1]    n/(2n+1) beta^(n+1) P_n'
     #  * sums[:, 2]    n/((2n+1)(n+1)) beta^(n+1) P_n'
     #  * sums[:, 3]    n/((2n+1)(n+1)) beta^(n+1) P_n''
-    coeffs = lut_fun(ctheta)
-    bbeta = np.cumprod(np.tile(beta[np.newaxis], (n_fact.shape[0], 1)),
-                       axis=0)
+    bbeta = np.cumprod(np.tile(beta[np.newaxis], (n_fact.shape[0], 1)), axis=0)
     bbeta *= beta
     # This is equivalent, but slower:
     # sums = np.sum(bbeta[:, :, np.newaxis].T * n_fact * coeffs, axis=1)
     # sums = np.rollaxis(sums, 2)
-    sums = np.einsum('ji,jk,ijk->ki', bbeta, n_fact, coeffs)
+    #a = len(bbeta) / 2
+    #b = len(coeffs) / 2
+    #sums = np.einsum('ji,jk,ijk->ki', bbeta[:a], n_fact[:a], coeffs[:b])
+    #sums = np.concatenate([sums, np.einsum('ji,jk,ijk->ki', bbeta[a:], n_fact[a:], coeffs[a:])])
+    sums = np.einsum('ji,jk,ijk->ki', bbeta, n_fact, lut_fun(ctheta))#coeffs)
     return sums
 
 
