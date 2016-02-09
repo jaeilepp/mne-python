@@ -106,7 +106,7 @@ def _get_legen_table(ch_type, volume_integral=False, n_coeff=100,
     return lut, n_fact
 
 
-def _get_legen_lut_fast(x, lut):
+def _get_legen_lut_fast(x, lut, k=None):
     """Return Legendre coefficients for given x values in -1<=x<=1"""
     # map into table vals (works for both vals and deriv tables)
     n_interp = (lut.shape[0] - 1.0)
@@ -114,7 +114,10 @@ def _get_legen_lut_fast(x, lut):
     mm = x * (n_interp / 2.0) + 0.5 * n_interp
     # nearest-neighbor version (could be decent enough...)
     idx = np.round(mm).astype(int)
-    vals = lut[idx]
+    if k is None:
+        vals = lut[idx]
+    else:  # read only one block to minimize memory consumption
+        vals = lut[idx,:,k]
     return vals
 
 
@@ -179,12 +182,13 @@ def _comp_sums_meg(beta, ctheta, lut_fun, n_fact, volume_integral):
     # This is equivalent, but slower:
     # sums = np.sum(bbeta[:, :, np.newaxis].T * n_fact * coeffs, axis=1)
     # sums = np.rollaxis(sums, 2)
-    #a = len(bbeta) / 2
-    #b = len(coeffs) / 2
-    #sums = np.einsum('ji,jk,ijk->ki', bbeta[:a], n_fact[:a], coeffs[:b])
-    #sums = np.concatenate([sums, np.einsum('ji,jk,ijk->ki', bbeta[a:], n_fact[a:], coeffs[a:])])
-    sums = np.einsum('ji,jk,ijk->ki', bbeta, n_fact, lut_fun(ctheta))#coeffs)
-    return sums
+    # or
+    # sums = np.einsum('ji,jk,ijk->ki', bbeta, n_fact, lut_fun(ctheta)))
+    sums = list()
+    for k in range(len(n_fact[0])):  # lookup in blocks to save memory
+        sums.append(np.einsum('ji,j,ij->i', bbeta, n_fact[:,k],
+                              lut_fun(ctheta, k=k)))
+    return np.array(sums)
 
 
 ###############################################################################
