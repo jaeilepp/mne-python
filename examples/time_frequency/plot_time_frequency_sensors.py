@@ -60,7 +60,7 @@ power.plot_topomap(ch_type='grad', tmin=0.5, tmax=1.5, fmin=8, fmax=12,
                    title='Alpha', vmax=0.45, show=False)
 power.plot_topomap(ch_type='grad', tmin=0.5, tmax=1.5, fmin=13, fmax=25,
                    baseline=(-0.5, 0), mode='logratio', axes=axis[1],
-                   title='Beta', vmax=0.45, show=False)
+                   title='Beta', vmax=0.45)
 mne.viz.tight_layout()
 
 # Inspect ITC
