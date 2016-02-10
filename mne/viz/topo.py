@@ -207,7 +207,7 @@ def _imshow_tfr(ax, ch_idx, tmin, tmax, vmin, vmax, onselect, ylim=None,
         plt.title(title)
     if not isinstance(ax, plt.Axes):
         ax = plt.gca()
-    ax.RS = RectangleSelector(ax, onselect=onselect)  # reference must be kept
+    #ax.RS = RectangleSelector(ax, onselect=onselect)  # reference must be kept
 
 
 def _plot_timeseries(ax, ch_idx, tmin, tmax, vmin, vmax, ylim, data, color,
