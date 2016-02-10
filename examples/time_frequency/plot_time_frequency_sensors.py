@@ -50,9 +50,8 @@ power, itc = tfr_morlet(epochs, freqs=freqs, n_cycles=n_cycles, use_fft=True,
 # power.apply_baseline(baseline=(-0.5, 0), mode='logratio')
 
 # Inspect power
-power.plot_topo(baseline=(-0.5, 0), mode='logratio', title='Average power',
-                show=False)
-power.plot([82], baseline=(-0.5, 0), mode='logratio', show=False)
+power.plot_topo(baseline=(-0.5, 0), mode='logratio', title='Average power')
+power.plot([82], baseline=(-0.5, 0), mode='logratio')
 
 fig, axis = plt.subplots(1, 2, figsize=(7, 4))
 power.plot_topomap(ch_type='grad', tmin=0.5, tmax=1.5, fmin=8, fmax=12,

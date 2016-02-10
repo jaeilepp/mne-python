@@ -961,7 +961,7 @@ def plot_tfr_topomap(tfr, tmin=None, tmax=None, fmin=None, fmax=None,
         ax = axes
 
     _hide_frame(ax)
-    logger.warning('ddddddddddddd')
+
     if title is not None:
         ax.set_title(title)
     fig_wrapper = list()
@@ -982,7 +982,7 @@ def plot_tfr_topomap(tfr, tmin=None, tmax=None, fmin=None, fmax=None,
         cbar.set_ticks((vmin, vmax))
         cbar.ax.tick_params(labelsize=12)
         cbar.ax.set_title('AU')
-    logger.warning('eeeeeeeeeeeee')
+
     plt_show(show)
     return fig
 

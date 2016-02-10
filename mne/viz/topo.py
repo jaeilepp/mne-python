@@ -117,7 +117,7 @@ def _plot_topo(info=None, times=None, show_func=None, layout=None,
     on_pick = partial(show_func, tmin=tmin, tmax=tmax, vmin=vmin,
                       vmax=vmax, ylim=ylim, x_label=x_label,
                       y_label=y_label, colorbar=colorbar)
-    warnings.warn('aaaaaaaaaaa')
+
     fig = plt.figure()
     if colorbar:
         norm = normalize_colors(vmin=vmin, vmax=vmax)
@@ -134,7 +134,7 @@ def _plot_topo(info=None, times=None, show_func=None, layout=None,
                                    axis_spinecolor=border,
                                    axis_facecolor=axis_facecolor,
                                    fig_facecolor=fig_facecolor)
-    warnings.warn('bbbbbbbbbbbb')
+
     for ax, ch_idx in my_topo_plot:
         if layout.kind == 'Vectorview-all' and ylim is not None:
             this_type = {'mag': 0, 'grad': 1}[channel_type(info, ch_idx)]
@@ -150,7 +150,7 @@ def _plot_topo(info=None, times=None, show_func=None, layout=None,
 
     if title is not None:
         plt.figtext(0.03, 0.9, title, color=font_color, fontsize=19)
-    warnings.warn('cccccccccccc')
+
     return fig
 
 
