@@ -38,19 +38,17 @@ dependencies:
 
 test:
   override:
+    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io/plot_\|/inverse/plot_\|/decoding/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing/plot_\|/datasets/plot_' ;; 2) cd doc && make html_dev-pattern PATTERN='/time_frequency/plot_time_frequency_sensors\|/visualization/plot_' ;; 3)cd doc && make html_dev-pattern PATTERN='/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_\(?!time_frequency_sensors\)\.\|/simulation/plot_' ;; esac:
+        parallel: true
+        timeout: 1500
+
+
+test:
+  post:
     - >
       if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
-      - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io/plot_\|/inverse/plot_\|/decoding/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing/plot_\|/datasets/plot_' ;; 2) cd doc && make html_dev-pattern PATTERN='/time_frequency/plot_time_frequency_sensors\|/visualization/plot_' ;; 3)cd doc && make html_dev-pattern PATTERN='/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_\(?!time_frequency_sensors\)\.\|/simulation/plot_' ;; esac:
-          parallel: true
-          timeout: 1500
+        ./bin/run-functional-tests.sh ${FUNCTIONAL_TEST_TARGET};
       fi
-
-#test:
-#  post:
-#    - >
-#      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
-#        ./bin/run-functional-tests.sh ${FUNCTIONAL_TEST_TARGET};
-#      fi
 
 general:
   artifacts:
