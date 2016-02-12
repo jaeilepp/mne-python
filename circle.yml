@@ -34,9 +34,6 @@ dependencies:
         if [[ ! -e ../examples/MNE-brainstorm-data ]]; then cd .. && sudo chmod 777 examples && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2; fi
       fi
 
-  override:
-    -
-
 test:
   override:
     - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io/plot_\|/inverse/plot_\|/decoding/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing/plot_\|/datasets/plot_' ;; 2) cd doc && make html_dev-pattern PATTERN='/time_frequency/plot_time_frequency_sensors\|/visualization/plot_' ;; 3)cd doc && make html_dev-pattern PATTERN='/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_\(?!time_frequency_sensors\)\.\|/simulation/plot_' ;; esac:
