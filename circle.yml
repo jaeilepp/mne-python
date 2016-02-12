@@ -12,9 +12,9 @@ dependencies:
         cd .. && sudo mkdir examples
         sudo pip install --upgrade pip
         sudo pip install traitlets pexpect pickleshare simplegeneric
-        cd .. && wget https://pypi.python.org/packages/source/i/ipython/ipython-4.1.1.tar.gz && tar -xzf ipython-4.1.1.tar.gz && cd ipython-4.1.1 && sudo python setup.py install
+        wget https://pypi.python.org/packages/source/i/ipython/ipython-4.1.1.tar.gz && tar -xzf ipython-4.1.1.tar.gz && cd ipython-4.1.1 && sudo python setup.py install
         sudo pip install sphinx==1.2.3 pygraphviz matplotlib Pillow neo scipy numpy
-        cd .. && git clone https://github.com/sphinx-gallery/sphinx-gallery.git && cd sphinx-gallery && sudo pip install -r requirements.txt && sudo python setup.py develop
+        git clone https://github.com/sphinx-gallery/sphinx-gallery.git && cd sphinx-gallery && sudo pip install -r requirements.txt && sudo python setup.py develop
         sudo pip install sphinx_bootstrap_theme
         sudo pip install numpy --upgrade
         sudo apt-get install libvtk5-dev python-vtk python-configobj
@@ -28,9 +28,9 @@ dependencies:
         sudo make testing_data
         sudo make spm_data
         sudo make somato_data
-        cd .. && sudo chmod -R 777 .mne
-        cd .. && sudo chmod -R 777 examples
-        cd .. && cd .mne && sudo chmod 777 mne-python.json && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/examples","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/examples","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/examples","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/examples","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/examples","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/examples","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/examples"}' > mne-python.json
+        sudo chmod -R 777 .mne
+        sudo chmod -R 777 examples
+        cd .mne && sudo chmod 777 mne-python.json && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/examples","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/examples","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/examples","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/examples","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/examples","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/examples","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/examples"}' > mne-python.json
         if [[ ! -e ../examples/MNE-brainstorm-data ]]; then cd .. && sudo chmod 777 examples && cd examples && mkdir MNE-brainstorm-data && cd MNE-brainstorm-data && wget https://copy.com/ZTHXXFcuIZycvRoA/brainstorm/bst_raw.tar.bz2 && tar xvf bst_raw.tar.bz2; fi
       fi
 
