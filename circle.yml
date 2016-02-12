@@ -54,7 +54,7 @@ test:
           3)
             cd doc && make html_dev-pattern PATTERN='/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_\(?!time_frequency_sensors\)\.\|/simulation/plot_'
             ;;
-        esac:
+        esac
       fi
 
 general:
