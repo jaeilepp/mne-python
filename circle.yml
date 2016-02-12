@@ -9,6 +9,7 @@ dependencies:
   pre:
     - >
       if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
+        cd .. && sudo mkdir examples
         sudo pip install --upgrade pip
         sudo pip install traitlets pexpect pickleshare simplegeneric
         cd .. && wget https://pypi.python.org/packages/source/i/ipython/ipython-4.1.1.tar.gz && tar -xzf ipython-4.1.1.tar.gz && cd ipython-4.1.1 && sudo python setup.py install
