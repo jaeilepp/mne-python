@@ -35,7 +35,7 @@ dependencies:
       fi
 
   override:
-    - cd ..
+    -
 
 test:
   override:
