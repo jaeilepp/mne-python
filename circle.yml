@@ -23,11 +23,12 @@ dependencies:
         sudo pip install nilearn
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset
         sudo pip install scikit-learn
-        sudo python setup.py install
+        cd mne-python && sudo python setup.py install
         sudo make sample_data
         sudo make testing_data
         sudo make spm_data
         sudo make somato_data
+        cd ..
         sudo chmod -R 777 .mne
         sudo chmod -R 777 examples
         cd .mne && sudo chmod 777 mne-python.json && echo '{"MNE_DATASETS_BRAINSTORM_PATH":"/home/ubuntu/examples","MNE_DATASETS_EEGBCI_PATH":"/home/ubuntu/examples","MNE_DATASETS_MEGSIM_PATH":"/home/ubuntu/examples","MNE_DATASETS_SAMPLE_PATH":"/home/ubuntu/examples","MNE_DATASETS_SOMATO_PATH":"/home/ubuntu/examples","MNE_DATASETS_SPM_FACE_PATH":"/home/ubuntu/examples","MNE_DATASETS_TESTING_PATH":"/home/ubuntu/examples"}' > mne-python.json
