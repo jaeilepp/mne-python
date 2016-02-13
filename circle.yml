@@ -23,7 +23,7 @@ dependencies:
         sudo pip install nilearn
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset
         sudo pip install scikit-learn
-        cd mne-python && sudo python setup.py install
+        cd /home/ubuntu/mne-python && sudo python setup.py install
         sudo make sample_data
         sudo make testing_data
         sudo make spm_data
@@ -56,7 +56,8 @@ test:
             cd doc && make html_dev-pattern PATTERN='/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_\(?!time_frequency_sensors\)\.\|/simulation/plot_'
             ;;
         esac
-      fi
+      fi:
+        parallel: true
 
 general:
   artifacts:
