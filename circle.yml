@@ -23,7 +23,7 @@ dependencies:
         sudo pip install nilearn
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset
         sudo pip install scikit-learn
-        cd /home/ubuntu/mne-python && sudo python setup.py install
+        cd /home/ubuntu/mne-python && sudo python setup.py develop --user
         sudo make sample_data
         sudo make testing_data
         sudo make spm_data
@@ -40,8 +40,9 @@ dependencies:
 
 test:
   override:
-    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io/plot_\|/inverse/plot_\|/decoding/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing/plot_\|/datasets/plot_' ;; 2) cd doc && make html_dev-pattern PATTERN='/time_frequency/plot_time_frequency_sensors\|/visualization/plot_\|/plot_' ;; 3) cd doc && make html_dev-pattern PATTERN='/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_\(?!time_frequency_sensors\)\.\|/simulation/plot_' ;; esac fi:
+    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io/plot_\|/inverse/plot_\|/visualization/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing/plot_\|/datasets/plot_' ;; 2) cd doc && make html_dev-pattern PATTERN='/time_frequency/plot_time_frequency_sensors\|/tutorials/plot_\|/examples/plot_' ;; 3) cd doc && make html_dev-pattern PATTERN='/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_\(?!time_frequency_sensors\)\.\|/simulation/plot_\|/decoding/plot_' ;; esac fi:
         parallel: true
+        timeout: 1500
 
 general:
   artifacts:
