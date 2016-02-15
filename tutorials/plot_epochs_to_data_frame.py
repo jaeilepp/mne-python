@@ -229,3 +229,5 @@ print(final_df)
 # import pandas as pd
 # group = pd.concat([df_1, df_2])
 # group['subject'] = np.r_[np.ones(len(df_1)), np.ones(len(df_2)) + 1]
+
+plt.ioff()

@@ -200,3 +200,5 @@ for ax in axs:
     cbar.set_label('-log10(p)')
     cbar.set_ticks(p_lims)
     cbar.set_ticklabels(['%0.1f' % p for p in p_lims])
+
+plt.ioff()
