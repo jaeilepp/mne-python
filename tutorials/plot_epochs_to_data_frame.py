@@ -99,9 +99,6 @@ from mne.datasets import sample
 
 print(__doc__)
 
-# turn on interactive mode
-plt.ion()
-
 data_path = sample.data_path()
 raw_fname = data_path + '/MEG/sample/sample_audvis_filt-0-40_raw.fif'
 event_fname = data_path + '/MEG/sample/sample_audvis_filt-0-40_raw-eve.fif'
@@ -229,5 +226,3 @@ print(final_df)
 # import pandas as pd
 # group = pd.concat([df_1, df_2])
 # group['subject'] = np.r_[np.ones(len(df_1)), np.ones(len(df_2)) + 1]
-
-plt.ioff()
