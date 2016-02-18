@@ -29,6 +29,7 @@ dependencies:
         else
           echo "Conda already set up.";
         fi;
+
         ls -al /home/ubuntu/miniconda;
         ls -al /home/ubuntu/miniconda/bin;
         echo $PATH;
@@ -36,7 +37,8 @@ dependencies:
         which pip;
         git clone https://github.com/sphinx-gallery/sphinx-gallery.git;
         cd sphinx-gallery && pip install -r requirements.txt && python setup.py develop;
-        pip install sphinx_bootstrap_theme pysurfer nilearn neo;
+        cd /home/ubuntu && git clone https://github.com/enthought/pyface.git && cd pyface && python setup.py develop
+        pip install sphinx_bootstrap_theme PySurfer nilearn neo;
         cd /home/ubuntu/mne-python && python setup.py develop;
         mkdir -p ~/examples;
         make sample_data;
@@ -53,7 +55,7 @@ dependencies:
 test:
   override:
     # Some examples take longer than 10 minutes to run.
-    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/io/plot_\|/inverse/plot_\|/visualization/plot_\|/decoding/plot_\|/simulation/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing/plot_\|/datasets/plot_' ;; 2) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_\|/examples/plot_\|/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_' ;; esac fi:
+    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_\|/examples/plot_\|/io/plot_\|/inverse/plot_\|/visualization/plot_\|/decoding/plot_\|/simulation/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/preprocessing/plot_\|/datasets/plot_\|/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_' ;; esac fi:
         parallel: true
         timeout: 1500
 
