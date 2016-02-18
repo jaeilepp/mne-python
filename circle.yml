@@ -56,7 +56,7 @@ test:
   override:
     # Some examples take longer than 10 minutes to run.
     #- if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_\|/examples/plot_\|/io/plot_\|/inverse/plot_\|/visualization/plot_\|/decoding/plot_\|/simulation/plot_\|/preprocessing/plot_\|/datasets/plot_\|/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_' ;; esac fi:
-    #- if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/decoding/plot_\|/inverse/plot_\|/io/plot_\|/time_frequency/plot_' ;; esac fi:
+    - if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/decoding/plot_\|/inverse/plot_\|/io/plot_\|/time_frequency/plot_' ;; esac fi:
         parallel: true
         timeout: 1500
 
