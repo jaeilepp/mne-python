@@ -45,13 +45,14 @@ test:
     #- if [ -n "${RUN_NIGHTLY_BUILD}" ]; then case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_\|/examples/plot_\|/io/plot_\|/inverse/plot_\|/visualization/plot_\|/decoding/plot_\|/simulation/plot_\|/preprocessing/plot_\|/datasets/plot_\|/connectivity/plot_\|/realtime/plot_\|/forward/plot_\|/stats/plot_\|/time_frequency/plot_' ;; esac fi:
     #- if [ -n "${RUN_NIGHTLY_BUILD}" ]; then cd doc && make html_dev-pattern PATTERN='/time_frequency/plot_' && make html_dev-pattern PATTERN='/examples/plot_\|/tutorials/plot_\|/connectivity/plt_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/visualization/plot_'; fi:
     #- cd doc && make html_dev-pattern PATTERN='/simulation/plot_'
-    branch: circle
-    commands:
-      - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' ;; esac:
-          parallel: true
-          timeout: 1500
+    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' ;; esac:
+        parallel: true
+        timeout: 1500
 
 general:
+  branches:
+    only:
+      - circle
   # Open the doc to the API
   artifacts:
     - "doc/_build/html"
