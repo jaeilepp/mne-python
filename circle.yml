@@ -66,5 +66,6 @@ general:
 
 deployment:
   production:
+    branch: circle-push
     commands:
       - cd ~ && git clone https://github.com/mne-tools/mne-tools.github.io.git && cd mne-tools.github.io && cp -r ../mne-python/doc/_build/html . && git add -A && git commit -m 'Update dev docs.' && git push origin master:production
