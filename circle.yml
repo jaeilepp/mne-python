@@ -70,5 +70,7 @@ deployment:
   production:
     branch: circle-push
     commands:
+      - git config --global user.email "you@example.com"
+      - git config --global user.name "Your Name"
       - cd .. && cd mne-tools.github.io && cp -r ../mne-python/doc/_build/html .
       - cd .. && cd mne-tools.github.io && git add -A && git commit -m 'Update dev docs.' && git push origin master:production
