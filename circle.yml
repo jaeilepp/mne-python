@@ -57,7 +57,7 @@ test:
   override:
     - make test-doc
     #- case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' ;; esac:
-    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' &&  cd ../../mne-tools.github.io && cp -r ../mne-python/doc/_build/html . ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' && cd ../../mne-tools.github.io/html && cp -r ../../mne-python/doc/_build/html/auto_examples . ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' &&  cd ../../mne-tools.github.io && cp -rf ../mne-python/doc/_build/html . ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' && cd ../../mne-tools.github.io/html && cp -rf ../../mne-python/doc/_build/html/auto_examples . ;; esac:
         parallel: true
         timeout: 1500
 
