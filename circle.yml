@@ -55,7 +55,7 @@ dependencies:
 
 test:
   override:
-    - cd doc && make html_dev
+    - cd doc && make html_dev:
          timeout: 1500
     #- cd ../mne-tools.github.io && mkdir html
     #- case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' ;; esac:
