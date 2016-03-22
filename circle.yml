@@ -73,6 +73,7 @@ deployment:
   production:
     branch: circle-push
     commands:
+      - cd doc/_build && cp -rf html ~/mne-tools.github.io
       - git config --global user.email "circle@mne.com"
       - git config --global user.name "Circle Ci"
       #- cd ../mne-tools.github.io && cp -rf $CIRCLE_ARTIFACTS/0/home/ubuntu/mne-python/doc/_build/html . && cd html && cp -rf $CIRCLE_ARTIFACTS/1/home/ubuntu/mne-python/doc/_build/html/auto_examples .
