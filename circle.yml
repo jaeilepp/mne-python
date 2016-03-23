@@ -47,7 +47,8 @@ dependencies:
     - python -c "import mne; mne.datasets.spm_face.data_path(verbose=True);";
     - python -c "import mne; mne.datasets.somato.data_path(verbose=True);";
     - python -c "import mne; mne.datasets.brainstorm.bst_raw.data_path(verbose=True);" --accept-brainstorm-license;
-    - python -c "import mne; mne.datasets.megsim.urls._load_all_data();" --update-dataset-path;
+    - python -c "import mne; mne.datasets.megsim.urls.load_data(condition='visual', data_format='single-trial', data_type='simulation'); load_data(condition='visual', data_format='raw', data_type='experimental'); load_data(condition='visual', data_format='evoked', data_type='simulation');" --update-dataset-path;
+    #- python -c "import mne; mne.datasets.megsim.urls._load_all_data();" --update-dataset-path;
     - python -c "import mne; mne.datasets.eegbci.data_path('http://www.physionet.org/physiobank/database/eegmmidb/S001/S001R06.edf', update_path=True, verbose=True);";
     - python -c "import mne; mne.sys_info()";
     - python -c "import mne, os; print(mne.datasets.sample.data_path(os.path.join(os.environ['HOME'], 'mne_data'), verbose=True))";
@@ -58,29 +59,24 @@ dependencies:
         cd /home/ubuntu/mne-tools.github.io && git checkout production;
       fi;
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset;
+    - git config --global user.email "circle@mne.com"
+    - git config --global user.name "Circle Ci"
 
 test:
   override:
-    - cd doc && make html_dev:
-         timeout: 1500
+    #- cd doc && make html_dev:
+    #     timeout: 1500
     #- cd ../mne-tools.github.io && mkdir html
     #- case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' ;; esac:
-    #- case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' && cd ../../mne-tools.github.io && mkdir html && cd html && cp -rf ../../mne-python/doc/_build/html/auto_examples . ;; esac:
     #- case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/examples/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/io/plot_';; esac:
-    #    parallel: true
+    - case $CIRCLE_NODE_INDEX in 0) cd doc && make html_dev-pattern PATTERN='/tutorials/plot_' ;; 1) cd doc && make html_dev-pattern PATTERN='/examples/plot_\|/connectivity/plot_\|/datasets/plot_\|/decoding/plot_\|/forward/plot_\|/inverse/plot_\|/io/plot_\|/preprocessing/plot_\|/realtime/plot_\|/simulation/plot_\|/stats/plot_\|/time_frequency/plot_\|/visualization/plot_' && cd ../../mne-tools.github.io && mkdir html && cd html && cp -rf ../../mne-python/doc/_build/html/auto_examples . ;; esac:
+        timeout: 1500
+        parallel: true
+    - cd ~/mne-tools.github.io && git checkout production && git pull origin production
+    - case $CIRCLE_NODE_INDEX in 0) cd doc/_build && cp -rf html ~/mne-tools.github.io && cd ~/mne-tools.github.io && git add -A && git commit -m 'Update dev docs.' && git push origin production ;; 1) cd doc/_build/html && cp -rf auto_examples ~/mne-tools.github.io/html && cd _images && cp * ~/mne-tools.github.io/html/_images && cd ~/mne-tools.github.io && git add auto_examples/* images/* && git commit -m 'Update dev docs.' && git push origin production;; esac
 
 
 general:
   # Open the doc to the API
   artifacts:
     - "doc/_build/html"
-
-deployment:
-  production:
-    branch: circle-push
-    commands:
-      - cd doc/_build && cp -rf html ~/mne-tools.github.io
-      - git config --global user.email "circle@mne.com"
-      - git config --global user.name "Circle Ci"
-      #- cd ../mne-tools.github.io && cp -rf $CIRCLE_ARTIFACTS/0/home/ubuntu/mne-python/doc/_build/html . && cd html && cp -rf $CIRCLE_ARTIFACTS/1/home/ubuntu/mne-python/doc/_build/html/auto_examples .
-      - cd ../mne-tools.github.io && git checkout production && git pull origin production && git add -A && git commit -m 'Update dev docs.' && git push origin production
