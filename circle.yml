@@ -26,18 +26,18 @@ dependencies:
     - rm -rf ~/.pyenv;
     - rm -rf ~/virtualenvs;
     # Get Anaconda and conda-based requirements
-    #- >
-    #  if [ ! -d "/home/ubuntu/miniconda" ]; then
-    #    echo "Setting up conda";
-    #    wget -q http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O ~/miniconda.sh;
-    #    chmod +x ~/miniconda.sh;
-    #    ~/miniconda.sh -b -p /home/ubuntu/miniconda;
-    #    conda update --yes --quiet conda;
-    #    conda create -n circleenv --yes pip python=2.7 pip numpy scipy scikit-learn mayavi matplotlib sphinx==1.2.3 pillow six IPython;
-    #    sed -i "s/ENABLE_USER_SITE = .*/ENABLE_USER_SITE = False/g" /home/ubuntu/miniconda/envs/circleenv/lib/python2.7/site.py;
-    #  else
-    #    echo "Conda already set up.";
-    #  fi;
+    - >
+      if [ ! -d "/home/ubuntu/miniconda" ]; then
+        echo "Setting up conda";
+        wget -q http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O ~/miniconda.sh;
+        chmod +x ~/miniconda.sh;
+        ~/miniconda.sh -b -p /home/ubuntu/miniconda;
+        conda update --yes --quiet conda;
+        conda create -n circleenv --yes pip python=2.7 pip numpy scipy scikit-learn mayavi matplotlib sphinx==1.2.3 pillow six IPython;
+        sed -i "s/ENABLE_USER_SITE = .*/ENABLE_USER_SITE = False/g" /home/ubuntu/miniconda/envs/circleenv/lib/python2.7/site.py;
+      else
+        echo "Conda already set up.";
+      fi;
     #- ls -al /home/ubuntu/miniconda;
     #- ls -al /home/ubuntu/miniconda/bin;
     - echo $PATH;
@@ -48,7 +48,7 @@ dependencies:
     #- cd sphinx-gallery && pip install -r requirements.txt && python setup.py develop;
     #- cd /home/ubuntu && git clone https://github.com/enthought/pyface.git && cd pyface && python setup.py develop;
     #- pip install sphinx_bootstrap_theme PySurfer nilearn neo;
-    #- cd /home/ubuntu/mne-python && python setup.py develop;
+    - cd /home/ubuntu/mne-python && python setup.py develop;
     - mkdir -p ~/mne_data;
     - cd ~/mne_data && mkdir aa && cd aa && touch ssad.txt;
     #- python -c "import mne; mne.datasets.sample.data_path(verbose=True);";
@@ -61,8 +61,6 @@ dependencies:
     #- python -c "import mne; mne.sys_info()";
     #- python -c "import mne, os; print(mne.datasets.sample.data_path(os.path.join(os.environ['HOME'], 'mne_data'), verbose=True))";
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1400x900x24 -ac +extension GLX +render -noreset;
-  override:
-    - cd
 
 test:
   override:
