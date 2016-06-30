@@ -38,8 +38,8 @@ dependencies:
       else
         echo "Conda already set up.";
       fi;
-    #- ls -al /home/ubuntu/miniconda;
-    #- ls -al /home/ubuntu/miniconda/bin;
+    - ls -al /home/ubuntu/miniconda;
+    - ls -al /home/ubuntu/miniconda/bin;
     - echo $PATH;
     - echo $CIRCLE_BRANCH
     - which python;
@@ -49,9 +49,9 @@ dependencies:
     #- cd /home/ubuntu && git clone https://github.com/enthought/pyface.git && cd pyface && python setup.py develop;
     #- pip install sphinx_bootstrap_theme PySurfer nilearn neo;
     - cd /home/ubuntu/mne-python && python setup.py develop;
-    - mkdir -p ~/mne_data;
-    - cd ~/mne_data && mkdir aa && cd aa && touch ssad.txt;
-    #- python -c "import mne; mne.datasets.sample.data_path(verbose=True);";
+    #- mkdir -p ~/mne_data;
+    #- cd ~/mne_data && mkdir aa && cd aa && touch ssad.txt;
+    - python -c "import mne; mne.datasets.sample.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.testing.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.spm_face.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.somato.data_path(verbose=True);";
