@@ -23,8 +23,8 @@ dependencies:
     # Get a running Python
     - cd ~;
     # Disable pyenv (no cleaner way provided by CircleCI as it prepends pyenv version to PATH)
-    - rm -rf ~/.pyenv;
-    - rm -rf ~/virtualenvs;
+    #- rm -rf ~/.pyenv;
+    #- rm -rf ~/virtualenvs;
     # Get Anaconda and conda-based requirements
     #- >
     #  if [ ! -d "/home/ubuntu/miniconda" ]; then
