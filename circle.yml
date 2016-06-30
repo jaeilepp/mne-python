@@ -23,8 +23,8 @@ dependencies:
     # Get a running Python
     - cd ~;
     # Disable pyenv (no cleaner way provided by CircleCI as it prepends pyenv version to PATH)
-    #- rm -rf ~/.pyenv;
-    #- rm -rf ~/virtualenvs;
+    - rm -rf ~/.pyenv;
+    - rm -rf ~/virtualenvs;
     # Get Anaconda and conda-based requirements
     #- >
     #  if [ ! -d "/home/ubuntu/miniconda" ]; then
@@ -44,15 +44,15 @@ dependencies:
     - echo $CIRCLE_BRANCH
     - which python;
     - which pip;
-    - pip install numpy
     #- git clone https://github.com/sphinx-gallery/sphinx-gallery.git;
     #- cd sphinx-gallery && pip install -r requirements.txt && python setup.py develop;
     #- cd /home/ubuntu && git clone https://github.com/enthought/pyface.git && cd pyface && python setup.py develop;
     #- pip install sphinx_bootstrap_theme PySurfer nilearn neo;
     #- cd /home/ubuntu/mne-python && python setup.py develop;
     - mkdir -p ~/mne_data;
+    - cd ~/mne_data && mkdir aa
     #- python -c "import mne; mne.datasets.sample.data_path(verbose=True);";
-    - python -c "import mne; mne.datasets.testing.data_path(verbose=True);";
+    #- python -c "import mne; mne.datasets.testing.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.spm_face.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.somato.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.brainstorm.bst_auditory.data_path(verbose=True)" --accept-brainstorm-license;
