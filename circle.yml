@@ -64,5 +64,5 @@ dependencies:
 
 test:
   override:
-    - cd ..
+    - cd
 
