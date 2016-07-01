@@ -51,10 +51,11 @@ dependencies:
     - cd /home/ubuntu/mne-python && python setup.py develop;
     #- mkdir -p ~/mne_data;
     #- cd ~/mne_data && mkdir aa && cd aa && touch ssad.txt;
-    - python -c "import mne; mne.datasets.sample.data_path(verbose=True);";
+    #- python -c "import mne; mne.datasets.sample.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.testing.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.spm_face.data_path(verbose=True);";
-    #- python -c "import mne; mne.datasets.somato.data_path(verbose=True);";
+  override:
+    - python -c "import mne; mne.datasets.somato.data_path(verbose=True);";
     #- python -c "import mne; mne.datasets.brainstorm.bst_auditory.data_path(verbose=True)" --accept-brainstorm-license;
     #- python -c "import mne; mne.datasets.brainstorm.bst_resting.data_path(verbose=True);" --accept-brainstorm-license;
     #- python -c "import mne; mne.datasets.brainstorm.bst_raw.data_path(verbose=True);" --accept-brainstorm-license;
