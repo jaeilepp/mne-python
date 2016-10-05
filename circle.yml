@@ -113,8 +113,7 @@ dependencies:
 
 test:
   override:
-    - if [[ $(cat build.txt) == "html_dev-noplot" ]]; then cd doc && make html_dev-noplot; elif [[ $(cat build.txt) == "html_dev-pattern" ]]; then cd doc && PATTERN=$(cat ../pattern.txt) make html_dev-pattern; else make test-doc; cd doc; make $(cat ../build.txt); fi:
-          timeout: 1500
+    - cd doc && make html_dev-pattern PATTERN='plot_decoding_spatio'
 
 general:
   # branches:
@@ -126,18 +125,10 @@ general:
 
 deployment:
   production:
-    branch: master
+    branch: test
     commands:
-      - git config --global user.email "circle@mne.com"
-      - git config --global user.name "Circle Ci"
-      - cd ../mne-tools.github.io && git checkout master && git pull origin master
-      - cd doc/_build/html && cp -rf * ~/mne-tools.github.io/dev
-      - cd ../mne-tools.github.io && git add -A && git commit -m 'Automated update of dev docs.' && git push origin master
+      - cd
   stable:
     branch: maint/0.13
     commands:
-      - git config --global user.email "circle@mne.com"
-      - git config --global user.name "Circle Ci"
-      - cd ../mne-tools.github.io && git checkout master && git pull origin master
-      - cd doc/_build/html_stable && cp -rf * ~/mne-tools.github.io/stable
-      - cd ../mne-tools.github.io && git add -A && git commit -m 'Automated update of stable docs.' && git push origin master
+      - cd
