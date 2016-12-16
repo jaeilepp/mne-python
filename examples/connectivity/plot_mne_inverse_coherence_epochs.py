@@ -106,6 +106,7 @@ print(freqs[1])
 # Note: We use a hack to save the frequency axis as time.
 tmin = np.mean(freqs[0])
 tstep = np.mean(freqs[1]) - tmin
+
 coh_stc = mne.SourceEstimate(coh, vertices=stc.vertices, tmin=1e-3 * tmin,
                              tstep=1e-3 * tstep, subject='sample')
 
